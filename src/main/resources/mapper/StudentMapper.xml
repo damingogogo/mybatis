@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.StudentMapper">
+
+    <select id="getInfo" resultType="com.example.entity.StudentInfo">
+        select *
+        from student
+        where id=#{id}
+    </select>
+
+    <select id="selectByName" resultType="com.example.entity.StudentInfo">
+        select *
+        from student
+        where sname=#{sname}
+    </select>
+
+    <insert id="insertInfo" parameterType="com.example.entity.StudentInfo">
+        insert into student(id,sname,classId,birthday,email)
+        values (#{id},#{sname},#{classId},#{birthday},#{email});
+    </insert>
+
+    <delete id="deleteById">
+        delete
+        from student
+        where id=#{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.example.entity.StudentInfo">
+        update student
+        set sname = #{sname},classId = #{classId},
+            birthday = #{birthday}, email = #{email}
+        where id = #{id}
+    </update>
+
+    <select id="selectAll" resultType="com.example.entity.StudentInfo">
+        select *
+        from student
+    </select>
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SchoolDao">
+  <resultMap id="BaseResultMap" type="com.example.entity.School">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="images" jdbcType="VARCHAR" property="images" />
+    <result column="nj_number" jdbcType="VARCHAR" property="njNumber" />
+    <result column="bj_number" jdbcType="VARCHAR" property="bjNumber" />
+    <result column="school_number" jdbcType="VARCHAR" property="schoolNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, code, sort, address, images, nj_number, bj_number, school_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from school
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from school
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.entity.School" useGeneratedKeys="true">
+    insert into school (`name`, code, sort, 
+      address, images, nj_number, 
+      bj_number, school_number)
+    values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{sort,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{images,jdbcType=VARCHAR}, #{njNumber,jdbcType=VARCHAR}, 
+      #{bjNumber,jdbcType=VARCHAR}, #{schoolNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.entity.School" useGeneratedKeys="true">
+    insert into school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+      <if test="njNumber != null">
+        nj_number,
+      </if>
+      <if test="bjNumber != null">
+        bj_number,
+      </if>
+      <if test="schoolNumber != null">
+        school_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="njNumber != null">
+        #{njNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bjNumber != null">
+        #{bjNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolNumber != null">
+        #{schoolNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.School">
+    update school
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="njNumber != null">
+        nj_number = #{njNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bjNumber != null">
+        bj_number = #{bjNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolNumber != null">
+        school_number = #{schoolNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.School">
+    update school
+    set `name` = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      images = #{images,jdbcType=VARCHAR},
+      nj_number = #{njNumber,jdbcType=VARCHAR},
+      bj_number = #{bjNumber,jdbcType=VARCHAR},
+      school_number = #{schoolNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
