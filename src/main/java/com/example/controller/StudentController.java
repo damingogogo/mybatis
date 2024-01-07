@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 
 
-@Controller
-//@RequestMapping("/stu")
+@RestController
+@RequestMapping("/stu")
 public class StudentController {
 
     @Autowired(required = false)

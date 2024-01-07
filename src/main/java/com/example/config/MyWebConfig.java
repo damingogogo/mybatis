@@ -25,7 +25,6 @@ public class MyWebConfig extends WebMvcConfigurationSupport {
 //        converters.add(responseBodyConverter());
 //    }
 //
-
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(responseBodyConverter());
